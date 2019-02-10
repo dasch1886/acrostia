@@ -1,0 +1,18 @@
+.page {
+  min-width: 100vw;
+  min-height: 100vh;
+  background: url(/images/background-home.jpg);
+  background-size: contain;
+  background-repeat: no-repeat; }
+  .page__paragraph {
+    color: #ffffff;
+    font-size: 18px; }
+  .page__header {
+    color: #800808c5; }
+
+.test {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+

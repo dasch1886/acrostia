@@ -1,0 +1,26 @@
+$p-color: #ffffff;
+
+.page {
+    min-width: 100vw;
+    min-height: 100vh;
+    background: url('../assets/background-home.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &__paragraph {
+        color: $p-color;
+        font-size: 18px;
+    }
+
+    &__header {
+        color: #800808c5;
+    }
+}
+
+@mixin  test {
+    user-select: none;
+}
+
+.test{
+    @include test();
+}
