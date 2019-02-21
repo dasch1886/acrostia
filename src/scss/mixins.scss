@@ -2,3 +2,15 @@
     width: 34px;
     height: 56px;
 }
+
+@mixin  hamburgerToCross($name, $angle,$edge: center center){
+    @keyframes #{$name}{
+        from{
+            transform: rotateZ(0deg);
+            transform-origin: $edge;
+        }to{
+            transform-origin: $edge;
+            transform: rotateZ($angle);
+        }
+    }   
+}
