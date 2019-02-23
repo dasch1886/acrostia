@@ -1,0 +1,231 @@
+@mixin mainContainer($backgroundUrl, $fontColor, $overflow) {
+    background: url($backgroundUrl);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    background-position: center center;
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-rows: min-content auto min-content;
+    grid-template-columns: 1fr 10fr 1fr;
+    grid-column-gap: 10px;
+    color: $fontColor;
+    overflow: $overflow;
+
+    @media only screen and (max-width: 930px) {
+        grid-column-gap: 0px;
+    }
+}
+
+@mixin navContainer($navItemActive) {
+    width: 100%;
+    background: transparent;
+    position: relative;
+    display: grid;
+    grid-auto-flow: column;
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+
+    @media only screen and (max-width: 800px) {
+        display: block;
+        grid-column: 1 / 4;
+        background: $navItemActive;
+    }
+}
+
+@mixin navContainerLogo {
+    font-family: 'Damion', cursive;
+    font-size: 50px;
+    padding-left: 15px;
+    cursor: pointer;
+
+    @media only screen and (min-width: 800px) {
+        height: 66.5px;
+        line-height: 66.5px + 50px;
+        padding-left: 0px;
+    }
+
+    @media only screen and (max-width: 420px) {
+        font-size: 60px;
+    }
+
+}
+
+@mixin navContainerLabel($spanColor) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    cursor: pointer;
+
+    @media only screen and (min-width: 800px) {
+        display: none;
+    }
+
+    &>span {
+        position: relative;
+        background: $spanColor;
+        height: 5px;
+        width: 2rem;
+        transition: all .3s ease;
+    }
+
+    .nav__line--middle {
+        margin: 7px 0px;
+    }
+}
+
+@mixin navContainerInput {
+    display: none;
+
+    &:checked~.nav__toggle--ul {
+        transform: scale(1, 1);
+        transition: transform 1s ease-in-out;
+    }
+
+    &:checked~.nav__toggle--label>span {
+        animation-duration: .3s;
+        animation-timing-function: ease;
+        animation-fill-mode: both;
+    }
+
+    &:checked~.nav__toggle--label>.nav__line--middle {
+        margin: 0px 0px;
+        opacity: 0;
+    }
+
+    &:checked~.nav__toggle--label>.nav__line--top {
+        top: 5px;
+        animation-name: line-top;
+    }
+
+    &:checked~.nav__toggle--label>.nav__line--bottom {
+        bottom: 5px;
+        animation-name: line-bottom;
+    }
+}
+
+@mixin navContainerToggle($navItemActive, $linkColor){
+    font-family: 'Lato', sans-serif;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    background: $navItemActive;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 1s ease-in-out;
+
+    @media only screen and (min-width: 800px) {
+        display: none;
+    }
+
+    &>ul {
+        height: calc(100vh - 50px);
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-flow: column;
+
+        &>li {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            padding: 5px 0px;
+
+            @media only screen and (max-width: 420px) {
+                height: 60px;
+                line-height: 60px;
+            }
+
+            a {
+                font-size: 36px;
+                text-decoration: none;
+                color: $linkColor;
+
+                @media only screen and (max-width: 420px) {
+                    font-size: 30px;
+                }
+            }
+
+            &:hover {
+                background: $linkColor;
+                transition: 1s all;
+            }
+
+            &:hover>a {
+                color: $navItemActive;
+                transition: 1s all;
+            }
+        }
+    }
+}
+
+@mixin navContainerStandard($navItemActive, $linkColor) {
+    justify-content: flex-end;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    ul>li {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        width: 100px;
+        height: 72px;
+        padding-bottom: 17px;
+        border-radius: 0px 0px 5px 5px;
+        cursor: pointer;
+        background: linear-gradient(to bottom,
+            $navItemActive 50%,
+            transparent 50%);
+        background-size: 100% 200%;
+        background-position-y: 100%;
+        transition: all 0.25s ease-in;
+
+        &:hover {
+            background-position-y: 0%;
+        }
+
+        a {
+            color: $linkColor;
+            text-decoration: none;
+
+            &:active {
+                background-color: $navItemActive;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 800px) {
+        display: none;
+    }
+}
+
+
+@mixin hamburgerToCross($name, $angle, $edge: center center) {
+    @keyframes #{$name} {
+        from {
+            transform: rotateZ(0deg);
+            transform-origin: $edge;
+        }
+
+        to {
+            transform-origin: $edge;
+            transform: rotateZ($angle);
+        }
+    }
+}

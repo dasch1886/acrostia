@@ -1,0 +1,169 @@
+.main {
+    @include mainContainer('../../assets/background-home.jpg', $mainFontColor, hidden);
+
+    &__nav {
+        @include navContainer($navItemActiveHome);
+    }
+
+    &__column {
+        &--first {
+            grid-row: 1 / 3;
+            grid-column-start: 1;
+            align-self: center;
+            justify-self: center;
+
+            .arrow--left {
+                @include arrowSize;
+                cursor: pointer;
+                background: url('../../assets/icon-css-sprites.png') -266px -180px;
+
+                @media only screen and (max-width: 768px) {
+                    transform: scale(0.75);
+                }
+
+                @media only screen and (max-width: 576px) {
+                    transform: scale(0.5);
+                }
+            }
+        }
+
+        &--second {
+            grid-row: 1 / 3;
+            grid-column-start: 2;
+            align-self: center;
+            justify-self: center;
+            display: grid;
+        }
+
+        &--third {
+            grid-row: 1 / 3;
+            grid-column-start: 3;
+            align-self: center;
+            justify-self: center;
+
+            .arrow--right {
+                @include arrowSize;
+                cursor: pointer;
+                background: url('../../assets/icon-css-sprites.png') -10px -340px;
+
+                @media only screen and (max-width: 768px) {
+                    transform: scale(0.75);
+                }
+
+                @media only screen and (max-width: 576px) {
+                    transform: scale(0.5);
+                }
+            }
+        }
+    }
+
+    &__footer--slider {
+        grid-row-start: 3;
+        grid-column: 1 / 4;
+        justify-self: center;
+        align-self: center;
+        margin-bottom: 10px;
+        margin-right: 35px;
+
+        @media only screen and (max-width: 1000px) {
+            margin-right: 0px;
+        }
+
+        .slider__dot {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: $sliderDotColor;
+            margin: 0px 10px 0px 10px;
+            cursor: pointer;
+        }
+    }
+}
+
+.main__nav {
+    h1 {
+        @include navContainerLogo;
+    }
+
+    .nav__toggle--label {
+        @include navContainerLabel($mainFontColor);
+    }
+
+    input {
+        @include navContainerInput;
+    }
+
+    .nav__toggle--ul {
+        @include navContainerToggle($navItemActiveHome, $mainFontColor);
+    }
+
+    .nav__standard {
+        @include navContainerStandard($navItemActiveHome, $mainFontColor);
+    }
+}
+
+.slider__container {
+    justify-self: center;
+    align-self: center;
+    width: 650px;
+    font-family: 'Lato', sans-serif;
+    color: $sliderFontColor;
+    background-color: $sliderBgColor;
+    box-shadow: 0 0 0 0.2rem $sliderBgColor;
+    border-radius: 1px;
+    padding: 5px;
+    margin-left: 30px;
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+
+    @media only screen and (max-width: 930px) {
+        margin: 0px;
+        width: 90%;
+    }
+
+    @media only screen and (max-width: 420px) {
+        grid-template-columns: 12fr;
+    }
+
+    .slider__column {
+        &--first {
+            align-self: center;
+            text-align: right;
+            font-size: 46px;
+            padding-right: 30px;
+            font-weight: lighter;
+
+            @media only screen and (max-width: 768px) {
+                font-size: 38px;
+            }
+
+            @media only screen and (max-width: 576px) {
+                text-align: center;
+                padding-right: 0px;
+            }
+
+            &>span {
+                display: block;
+            }
+        }
+
+        &--second {
+            align-self: center;
+            font-size: 96px;
+            font-weight: bolder;
+
+            @media only screen and (max-width: 768px) {
+                font-size: 66px;
+            }
+
+            @media only screen and (max-width: 576px) {
+                font-size: 60px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+@include hamburgerToCross(line-bottom, 45deg);
+@include hamburgerToCross(line-top, -45deg);
