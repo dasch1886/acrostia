@@ -1,2 +1,1 @@
-// import './assets/background-home.jpg';
-import './scss/main-page/style.scss';
+import './scss/home/style.scss';
