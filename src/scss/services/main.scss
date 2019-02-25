@@ -1,0 +1,86 @@
+.main {
+    @include mainContainer('../../assets/background-services.jpg', $mainFontColor, auto);
+
+    &__nav {
+        @include navContainer($navItemActive);
+    }
+
+    &__services {
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
+    }
+}
+
+.main__nav {
+    h1 {
+        @include navContainerLogo;
+    }
+
+    .nav__toggle--label {
+        @include navContainerLabel($mainFontColor);
+    }
+
+    input {
+        @include navContainerInput;
+    }
+
+    .nav__toggle--ul {
+        @include navContainerToggle($navItemActive, $mainFontColor);
+    }
+
+    .nav__standard {
+        @include navContainerStandard($navItemActive, $mainFontColor);
+    }
+}
+
+.main__services {
+    display: grid;
+    grid-auto-flow: row;
+
+    .services__text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+
+        &>h2,
+        &>p {
+            text-align: center;
+        }
+
+        h2 {
+            font-family: Myriad Pro;
+            font-size: 50px;
+            margin: 10px 0px;
+        }
+
+        &--medium {
+            font-size: 18px;
+            text-transform: uppercase;
+            margin: 10px 0px;
+
+            span{
+                color: $textLobortis;
+            }
+        }
+
+        &--small {
+            width: 90%;
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+
+    .services__icons{
+        display: grid;
+        grid-auto-flow: column;
+
+
+        & > p {
+            font-size: 14px;
+        }
+    }
+}
+
+@include hamburgerToCross(line-bottom, 45deg);
+@include hamburgerToCross(line-top, -45deg);
