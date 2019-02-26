@@ -1,0 +1,20 @@
+@mixin lightball {
+    height: 140px;
+    width: 140px;
+    background: url('../../assets/icon-css-sprites.png') -170px -194px;
+}
+
+@mixin giars {
+    width: 140px; height: 140px;
+    background: url('../../assets/icon-css-sprites.png') -10px -194px;
+}
+
+@mixin rocket {
+    width: 140px; height: 140px;
+    background: url('../../assets/icon-css-sprites.png') -378px -10px;
+}
+
+@mixin wand {
+    width: 140px; height: 140px;
+    background: url('../../assets/icon-css-sprites.png') -378px -170px;
+}

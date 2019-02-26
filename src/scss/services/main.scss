@@ -1,8 +1,10 @@
 .main {
-    @include mainContainer('../../assets/background-services.jpg', $mainFontColor, auto);
+    @include mainContainer('../../assets/background-services.jpg', $mainFontColor);
+    overflow-x: hidden;
 
     &__nav {
         @include navContainer($navItemActive);
+        
     }
 
     &__services {
@@ -26,6 +28,7 @@
 
     .nav__toggle--ul {
         @include navContainerToggle($navItemActive, $mainFontColor);
+        position: fixed;
     }
 
     .nav__standard {
@@ -36,6 +39,11 @@
 .main__services {
     display: grid;
     grid-auto-flow: row;
+    
+    @media only screen and (max-width: 968px) {
+        grid-row-gap: 15px;
+        margin-bottom: 15px;
+    }
 
     .services__text {
         display: flex;
@@ -50,12 +58,12 @@
 
         h2 {
             font-family: Myriad Pro;
-            font-size: 50px;
+            font-size: 48px;
             margin: 10px 0px;
         }
 
         &--medium {
-            font-size: 18px;
+            font-size: 16px;
             text-transform: uppercase;
             margin: 10px 0px;
 
@@ -66,7 +74,7 @@
 
         &--small {
             width: 90%;
-            font-size: 14px;
+            font-size: 12px;
             line-height: 20px;
         }
     }
@@ -74,11 +82,74 @@
     .services__icons{
         display: grid;
         grid-auto-flow: column;
+        grid-column-gap: 15px;
+        grid-template-columns: repeat(4,3fr);
+        grid-template-rows: min-content;
 
-
-        & > p {
-            font-size: 14px;
+        @media only screen and (max-width: 968px){
+            grid-auto-flow: row;
+            grid-template-columns: repeat(2,5fr);
+            grid-row-gap: 15px;
         }
+
+        @media only screen and (max-width: 576px){
+            grid-auto-flow: row;
+            grid-template-columns: repeat(1,10fr);
+            grid-row-gap: 15px;
+        }
+
+        
+    }
+}
+
+.icons__container{
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: 134px min-content min-content;
+    background: $servicesIcons;
+    padding-bottom: 30px;
+
+    .icons__logo{
+
+        &--research,
+        &--design,
+        &--development,
+        &--lunch{
+            align-self: center;
+            justify-self: center;
+            transform: scale(0.6);
+        }
+
+        &--research{
+            @include lightball;
+        }
+
+        &--design{
+            @include wand;
+        }
+
+        &--development{
+            @include giars;
+        }
+
+        &--lunch{
+            @include rocket;
+        }        
+    }
+
+    & > span {
+        justify-self: center;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 25px;
+        margin-bottom: 25px;
+    }
+
+    & > p {
+        justify-self: center;
+        text-align: center;
+        font-size: 12px;
+        width: 80%;
     }
 }
 
