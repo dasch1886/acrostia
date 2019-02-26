@@ -108,6 +108,12 @@
     grid-template-rows: 134px min-content min-content;
     background: $servicesIcons;
     padding-bottom: 30px;
+    cursor: pointer;
+
+    &:hover{
+        transform: scale(1.2);
+        transition: transform 1s;
+    }
 
     .icons__logo{
 
