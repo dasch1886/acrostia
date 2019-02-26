@@ -9,6 +9,10 @@ module.exports = {
     services: [
       __dirname + '/src/app/services.js',
       __dirname + '/src/scss/services/style.scss'
+    ],
+    about: [
+      __dirname + '/src/app/about.js',
+      __dirname + '/src/scss/about/style.scss'
     ]
   },
   output: {
@@ -21,26 +25,22 @@ module.exports = {
   devServer: {
     contentBase: __dirname + '/dist',
     port: 9000,
-    
+
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: '/images'
-            }
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: '/images'
           }
-        ]
+        }]
       },
       {
         test: /\.scss$/,
-        use: [
-          {
+        use: [{
             loader: 'style-loader'
           },
           {
