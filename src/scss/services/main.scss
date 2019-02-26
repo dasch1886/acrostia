@@ -15,7 +15,7 @@
 
 .main__nav {
     h1 {
-        @include navContainerLogo;
+        @include navContainerLogo($mainFontColor);
     }
 
     .nav__toggle--label {

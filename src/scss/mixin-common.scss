@@ -36,11 +36,16 @@
     }
 }
 
-@mixin navContainerLogo {
+@mixin navContainerLogo ($logoColor){
     font-family: 'Damion', cursive;
     font-size: 50px;
     padding-left: 15px;
     cursor: pointer;
+
+    a{
+        text-decoration: none;
+        color: $logoColor;
+    }
 
     @media only screen and (min-width: 800px) {
         height: 66.5px;
