@@ -13,6 +13,10 @@ module.exports = {
     about: [
       __dirname + '/src/app/about.js',
       __dirname + '/src/scss/about/style.scss'
+    ],
+    work: [
+      __dirname + '/src/app/work.js',
+      __dirname + '/src/scss/work/style.scss'
     ]
   },
   output: {
