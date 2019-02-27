@@ -1,0 +1,247 @@
+.main {
+    @include mainContainer('../../assets/background-about.jpg', $mainFontColor);
+    overflow-x: hidden;
+
+    &__nav {
+        @include navContainer($navItemActive);
+
+    }
+
+    &__about {
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
+    }
+}
+
+.main__nav {
+    h1 {
+        @include navContainerLogo($mainFontColor);
+    }
+
+    .nav__toggle--label {
+        @include navContainerLabel($mainFontColor);
+    }
+
+    input {
+        @include navContainerInput;
+    }
+
+    .nav__toggle--ul {
+        @include navContainerToggle($navItemActive, $mainFontColor);
+        position: fixed;
+    }
+
+    .nav__standard {
+        @include navContainerStandard($navItemActive, $mainFontColor);
+    }
+}
+
+.main__about {
+    display: grid;
+    grid-auto-flow: row;
+
+    @media only screen and (max-width: 968px) {
+        grid-row-gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .about__text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+
+        &>h2,
+        &>p {
+            text-align: center;
+        }
+
+        h2 {
+            font-family: Myriad Pro;
+            font-size: 48px;
+            margin: 10px 0px;
+            text-transform: uppercase;
+
+            @media only screen and (max-width: 800px) {
+                margin-top: 60px;
+                margin-bottom: 10px;
+            }
+        }
+
+        &--small {
+            width: 90%;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        .about__arrow--down{
+            background: $bannerWithArrow;
+            margin: 10px 0px;
+            padding: 10px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .about__arrow--down::after{
+            content: '';
+            position: absolute;
+            z-index: -1;
+            width: 15px;
+            height: 15px;
+            bottom: -7.5px;
+            left: 50%;
+            margin-left: -7.5px;
+            transform: rotate(45deg);
+            transform-origin: center center;
+            background: $bannerWithArrow; 
+        }
+    }
+
+    .about__members {
+        display: grid;
+        grid-auto-flow: column;
+        grid-column-gap: 15px;
+        grid-template-columns: repeat(4, 3fr);
+        grid-template-rows: min-content;
+
+        @media only screen and (max-width: 968px) {
+            grid-auto-flow: row;
+            grid-template-columns: repeat(2, 5fr);
+            grid-row-gap: 15px;
+        }
+
+        @media only screen and (max-width: 576px) {
+            grid-auto-flow: row;
+            grid-template-columns: repeat(1, 10fr);
+            grid-row-gap: 15px;
+        }
+    }
+}
+
+.member__container {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: 134px min-content min-content;
+    background: $memberContainerColor;
+    padding-bottom: 30px;
+    cursor: pointer;
+    transition: all 1s;
+
+    &:hover {
+        transform: scale(1.2);
+        transition: transform 1s;
+    }
+
+    &:hover>.member__shape {
+        background: url('../../assets/icons-about.png') -194px -10px;
+    }
+
+    &:hover>p {
+        color: $memberPositionColorHover;
+        transition: all 0.5s;
+    }
+
+    &:hover .icons__social>.icons__social--facebook {
+        background: $iconFacebookHover;
+        transition: all 0.5s;
+    }
+
+    &:hover .icons__social>.icons__social--twitter {
+        background: $iconTwitterHover;
+        transition: all 0.5s;
+    }
+
+    &:hover .icons__social>.icons__social--google {
+        background: $iconGoogleHover;
+        transition: all 0.5s;
+    }
+
+    &:hover .icons__social>.icons__social--linkedin {
+        background: $iconLinkedinHover;
+        transition: all 0.5s;
+    }
+
+    .member__shape {
+        align-self: center;
+        justify-self: center;
+        transform: scale(0.5);
+        width: 164px;
+        height: 164px;
+        background: url('../../assets/icons-about.png') -10px -10px;
+    }
+
+    &>span {
+        justify-self: center;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 25px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    &>p {
+        justify-self: center;
+        text-align: center;
+        font-size: 12px;
+        color: $memberPositionColor;
+        width: 80%;
+        transition: all 0.5s;
+        margin-bottom: 25px;
+    }
+
+    .icons__social {
+        justify-self: center;
+        display: grid;
+        grid-template-columns: repeat(4, 30px);
+        grid-template-rows: minmax(30px, auto);
+        grid-column-gap: 15px;
+
+        &--facebook,
+        &--twitter,
+        &--google,
+        &--linkedin {
+            min-height: 30px;
+            min-width: 30px;
+            background: $socialIcons;
+            position: relative;
+            border-radius: 50%;
+            transition: all 0.5s;
+        }
+
+        &--facebook::before,
+        &--twitter::before,
+        &--google::before,
+        &--linkedin::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 15px;
+            background: url('../../assets/icons-about.png') -10px -230px;
+            transition: all 0.5s;
+        }
+
+        &--twitter::before {
+            width: 15px;
+            height: 12px;
+            background: url('../../assets/icons-about.png') -79px -194px;
+        }
+
+        &--google::before {
+            width: 15px;
+            height: 16px;
+            background: url('../../assets/icons-about.png') -10px -194px;
+        }
+
+        &--linkedin::before {
+            width: 14px;
+            height: 14px;
+            background: url('../../assets/icons-about.png') -45px -194px;
+        }
+    }
+}
+
+@include hamburgerToCross(line-bottom, 45deg);
+@include hamburgerToCross(line-top, -45deg);
