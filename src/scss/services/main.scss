@@ -60,6 +60,12 @@
             font-family: Myriad Pro;
             font-size: 48px;
             margin: 10px 0px;
+            text-transform: uppercase;
+
+            @media only screen and (max-width: 800px) {
+                margin-top: 60px;
+                margin-bottom: 10px;
+            }
         }
 
         &--medium {
@@ -109,6 +115,7 @@
     background: $servicesIcons;
     padding-bottom: 30px;
     cursor: pointer;
+    transition: all 1s;
 
     &:hover{
         transform: scale(1.2);
