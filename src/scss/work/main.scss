@@ -1,0 +1,258 @@
+.main {
+    @include mainContainer('../../assets/background-work.jpg', $mainFontColor);
+    overflow-x: hidden;
+
+    &__nav {
+        @include navContainer($navItemActive);
+    }
+
+    &__work {
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
+    }
+}
+
+.main__nav {
+    h1 {
+        @include navContainerLogo($mainFontColor);
+    }
+
+    .nav__toggle--label {
+        @include navContainerLabel($mainFontColor);
+    }
+
+    input {
+        @include navContainerInput;
+    }
+
+    .nav__toggle--ul {
+        @include navContainerToggle($navItemActive, $mainFontColor);
+        position: fixed;
+    }
+
+    .nav__standard {
+        @include navContainerStandard($navItemActive, $mainFontColor);
+    }
+}
+
+.main__work {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: auto min-content auto;
+
+    @media only screen and (max-width: 968px) {
+        grid-row-gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .work__text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+        padding-top: 20px;
+        padding-bottom: 30px;
+
+        &>h2,
+        &>p {
+            text-align: center;
+        }
+
+        h2 {
+            font-family: Myriad Pro;
+            font-size: 48px;
+            margin: 10px 0px;
+            text-transform: uppercase;
+
+            @media only screen and (max-width: 800px) {
+                margin-top: 60px;
+                margin-bottom: 10px;
+            }
+        }
+
+        &--small {
+            width: 90%;
+            font-size: 12px;
+            line-height: 20px;
+        }
+    }
+
+    .work__portfolio--nav {
+        border-top: 1px;
+        border-bottom: 1px;
+        border-style: solid;
+        border-color: $borderPortfolioNav;
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: min-content;
+        padding: 20px 0px;
+
+        @media only screen and (max-width: 700px) {
+            grid-auto-flow: row;
+            grid-row-gap: 20px;
+        }
+
+        &>span {
+            align-self: center;
+            margin-left: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+
+            @media only screen and (max-width: 700px) {
+                margin-left: 0px;
+                text-align: center;
+            }
+        }
+
+        div {
+            justify-self: flex-end;
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-rows: min-content;
+            grid-column-gap: 20px;
+
+            @media only screen and (max-width: 700px) {
+                grid-auto-flow: row;
+                justify-self: center;
+            }
+
+            span {
+                font-size: 14px;
+                padding: 7.5px;
+                border-radius: 5px;
+                text-align: center;
+                cursor: pointer;
+
+                &:hover {
+                    background: $portfolioNavHover;
+
+                }
+            }
+        }
+    }
+
+    .work__portfolio {
+        display: grid;
+        grid-gap: 15px;
+        grid-template-columns: repeat(4, 3fr);
+        grid-template-rows: min-content;
+        margin: 25px 0px;
+
+        @media only screen and (max-width: 968px) {
+            grid-template-columns: repeat(2, 5fr)
+        }
+
+        @media only screen and (max-width: 576px) {
+            grid-auto-flow: row;
+            grid-template-columns: repeat(1, 12fr);
+        }
+
+        .portfolio__container {
+            display: grid;
+            cursor: pointer;
+
+            &:hover>.container__pic::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.4);
+                transition: all 1s;
+            }
+
+            &:hover>.container__pic::after {
+                content: '';
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: url('../../assets/circle-with-plus.png');
+                transition: all 1s;
+            }
+
+            .container__pic {
+                justify-self: center;
+                width: 100%;
+                max-width: 200px;
+                height: 200px;
+                position: relative;
+
+                &--first {
+                    background: url('../../assets/pictures-work.png') -576px -230px;
+                }
+
+                &--second {
+                    background: url('../../assets/pictures-work.png') -10px -10px;
+                }
+
+                &--third {
+                    background: url('../../assets/pictures-work.png') -10px -451px;
+                }
+
+                &--fourth {
+                    background: url('../../assets/pictures-work.png') -293px -10px;
+                }
+
+                &--fifth {
+                    background: url('../../assets/pictures-work.png') -290px -451px;
+                }
+
+                &--sixth {
+                    background: url('../../assets/pictures-work.png') -293px -231px;
+                }
+
+                &--seventh {
+                    background: url('../../assets/pictures-work.png') -10px -231px;
+                }
+
+                &--eighth {
+                    background: url('../../assets/pictures-work.png') -576px -10px;
+                }
+            }
+
+            .container__desc {
+                justify-self: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 40px;
+                background: $pictureDescBackground;
+                width: 100%;
+                max-width: 200px;
+                text-transform: uppercase;
+                font-size: 14px;
+                color: $pictureDescTextColor;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: -15px;
+                    left: 50%;
+                    margin-left: -15px;
+                    z-index: 2;
+                    background: inherit;
+                    width: 30px;
+                    height: 30px;
+                    transform: rotate(-45deg);
+                }
+
+                span {
+                    width: 100%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 3;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+@include hamburgerToCross(line-bottom, 45deg);
+@include hamburgerToCross(line-top, -45deg);
