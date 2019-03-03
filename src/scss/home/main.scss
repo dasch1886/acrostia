@@ -3,7 +3,7 @@
     overflow-x: hidden;
 
     &__nav {
-        @include navContainer($navItemActiveHome);
+        @include navContainer($navItemActive);
     }
 
     &__column {
@@ -96,11 +96,11 @@
     }
 
     .nav__toggle--ul {
-        @include navContainerToggle($navItemActiveHome, $mainFontColor);
+        @include navContainerToggle($navItemActive, $mainFontColor);
     }
 
     .nav__standard {
-        @include navContainerStandard($navItemActiveHome, $mainFontColor);
+        @include navContainerStandard($navItemActive, $mainFontColor);
     }
 }
 
