@@ -17,6 +17,10 @@ module.exports = {
     work: [
       __dirname + '/src/app/work.js',
       __dirname + '/src/scss/work/style.scss'
+    ],
+    contact: [
+      __dirname + '/src/app/contact.js',
+      __dirname + '/src/scss/contact/style.scss'
     ]
   },
   output: {
