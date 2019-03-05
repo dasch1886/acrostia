@@ -18,7 +18,7 @@ module.exports = {
       __dirname + '/src/app/work.js',
       __dirname + '/src/scss/work/style.scss'
     ],
-    contact: [
+    contacts: [
       __dirname + '/src/app/contact.js',
       __dirname + '/src/scss/contact/style.scss'
     ]
