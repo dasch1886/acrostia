@@ -36,13 +36,13 @@
     }
 }
 
-@mixin navContainerLogo ($logoColor){
+@mixin navContainerLogo ($logoColor) {
     font-family: 'Damion', cursive;
     font-size: 50px;
     padding-left: 15px;
     cursor: pointer;
 
-    a{
+    a {
         text-decoration: none;
         color: $logoColor;
     }
@@ -242,4 +242,9 @@
             transform: rotateZ($angle);
         }
     }
+}
+
+@mixin center-self {
+    align-self: center;
+    justify-self: center;
 }
