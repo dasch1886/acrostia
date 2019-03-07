@@ -169,7 +169,7 @@
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                background: url('../../assets/circle-with-plus.png');
+                background: url('../../assets/pictures-work.png') -572px -451px;
                 transition: all 1s;
             }
 
@@ -193,7 +193,7 @@
                 }
 
                 &--fourth {
-                    background: url('../../assets/pictures-work.png') -293px -10px;
+                    background: url('../../assets/pictures-work.png') -576px -10px;
                 }
 
                 &--fifth {
@@ -201,15 +201,15 @@
                 }
 
                 &--sixth {
-                    background: url('../../assets/pictures-work.png') -293px -231px;
+                    background: url('../../assets/pictures-work.png') -293px -10px;
                 }
 
                 &--seventh {
-                    background: url('../../assets/pictures-work.png') -10px -231px;
+                    background: url('../../assets/pictures-work.png') -293px -231px;
                 }
 
                 &--eighth {
-                    background: url('../../assets/pictures-work.png') -576px -10px;
+                    background: url('../../assets/pictures-work.png') -10px -231px;
                 }
             }
 
