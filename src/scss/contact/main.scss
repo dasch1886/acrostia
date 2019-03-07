@@ -79,17 +79,31 @@
 
     .contact__data {
         display: grid;
-        grid-auto-flow: column;
+        grid-auto-flow: row;
         grid-template-columns: max-content auto;
         grid-column-gap: 20px;
+
+        @media only screen and (max-width: 968px) {
+            grid-template-columns: auto;
+            grid-row-gap: 20px;
+        }
 
         &--address {
             display: grid;
             grid-auto-flow: column;
 
+            @media only screen and (max-width: 968px) {
+                grid-auto-flow: row;
+                grid-row-gap: 20px;
+            }
+
             &>div:nth-child(1) {
                 display: grid;
                 grid-auto-flow: row;
+
+                @media only screen and (max-width: 968px) {
+                    grid-row-gap: 10px;
+                }
 
                 &>div:nth-child(1) {
                     display: grid;
@@ -98,6 +112,10 @@
 
                     &>span {
                         font-size: 16px;
+
+                        @media only screen and (max-width: 968px) {
+                           text-align: center;
+                        }
                     }
 
                     &>span:nth-child(1) {
@@ -124,8 +142,16 @@
                         grid-template-columns: 2fr 10fr;
                         grid-column-gap: 10px;
 
+                        @media only screen and (max-width: 968px) {
+                            grid-template-columns: 6fr 6fr;
+                        }
+
                         &>span:nth-child(1) {
                             opacity: .5;
+
+                            @media only screen and (max-width: 968px) {
+                                text-align: right;
+                            }
                         }
                     }
                 }
@@ -138,6 +164,12 @@
                 border-radius: 5px;
                 background: #ffffff;
                 margin-right: 20px;
+
+                @media only screen and (max-width: 968px) {
+                    margin-right: 0px;
+                    width: 80%;
+                    justify-self: center;
+                }
             }
         }
 
@@ -147,6 +179,11 @@
             display: grid;
             grid-auto-flow: row;
             grid-template-rows: repeat(2, min-content);
+
+            @media only screen and (max-width: 968px) {
+                grid-row-start: 2;
+                grid-column-start: 1;
+            }
 
             &>span {
                 font-family: Myriad Pro;
@@ -184,6 +221,7 @@
             }
 
             &>textarea {
+                height: 90px;
                 outline: none;
                 border: none;
                 padding: 10px 15px;
@@ -212,6 +250,12 @@
             display: flex;
             align-items: flex-start;
             justify-content: center;
+
+            @media only screen and (max-width: 968px) {
+                grid-row-start: 3;
+                grid-column-start: 1;
+                height: auto;
+            }
 
             & button {
                 width: 50%;
