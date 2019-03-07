@@ -39,12 +39,21 @@ module.exports = {
     rules: [{
         test: /\.(png|jpg|gif)$/,
         use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: '/images'
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: '/images'
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              query: {
+                optimizationLevel: 7
+              }
+            }
           }
-        }]
+        ]
       },
       {
         test: /\.scss$/,
