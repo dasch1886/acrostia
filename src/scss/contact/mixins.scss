@@ -1,0 +1,28 @@
+@mixin iconsSize {
+    min-height: 50px;
+    min-width: 50px;
+}
+
+@mixin iconFacebook {
+    width: 14px;
+    height: 30px;
+    background: url('../../assets/icons-contacts.png') -108px -10px;
+}
+
+@mixin iconTwitter {
+    width: 29px;
+    height: 24px;
+    background: url('../../assets/icons-contacts.png') -10px -61px;
+}
+
+@mixin iconGoogle {
+    width: 30px;
+    height: 31px;
+    background: url('../../assets/icons-contacts.png') -10px -10px;
+}
+
+@mixin iconLinkedin {
+    width: 28px;
+    height: 27px;
+    background: url('../../assets/icons-contacts.png') -60px -10px;
+}
