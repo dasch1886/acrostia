@@ -3,7 +3,7 @@
     overflow-x: hidden;
 
     &__nav {
-        @include navContainer($navItemActive);
+        @include navContainer($navItemHoverBg);
     }
 
     &__work {
@@ -26,12 +26,12 @@
     }
 
     .nav__toggle--ul {
-        @include navContainerToggle($navItemActive, $mainFontColor);
+        @include navContainerToggle($navItemHoverBg, $mainFontColor);
         position: fixed;
     }
 
     .nav__standard {
-        @include navContainerStandard($navItemActive, $mainFontColor);
+        @include navContainerStandard($navItemHoverBg, $mainFontColor);
     }
 }
 
@@ -52,36 +52,13 @@
         flex-flow: column;
         padding-top: 20px;
         padding-bottom: 30px;
-
-        &>h2,
-        &>p {
-            text-align: center;
-        }
-
-        h2 {
-            font-family: Myriad Pro;
-            font-size: 48px;
-            margin: 10px 0px;
-            text-transform: uppercase;
-
-            @media only screen and (max-width: 800px) {
-                margin-top: 60px;
-                margin-bottom: 10px;
-            }
-        }
-
-        &--small {
-            width: 90%;
-            font-size: 12px;
-            line-height: 20px;
-        }
     }
 
     .work__portfolio--nav {
         border-top: 1px;
         border-bottom: 1px;
         border-style: solid;
-        border-color: $borderPortfolioNav;
+        border-color: $portfolioNavBorder;
         display: grid;
         grid-auto-flow: column;
         grid-template-rows: min-content;
@@ -90,45 +67,6 @@
         @media only screen and (max-width: 700px) {
             grid-auto-flow: row;
             grid-row-gap: 20px;
-        }
-
-        &>span {
-            align-self: center;
-            margin-left: 10px;
-            text-transform: uppercase;
-            font-weight: bold;
-            cursor: pointer;
-
-            @media only screen and (max-width: 700px) {
-                margin-left: 0px;
-                text-align: center;
-            }
-        }
-
-        div {
-            justify-self: flex-end;
-            display: grid;
-            grid-auto-flow: column;
-            grid-template-rows: min-content;
-            grid-column-gap: 20px;
-
-            @media only screen and (max-width: 700px) {
-                grid-auto-flow: row;
-                justify-self: center;
-            }
-
-            span {
-                font-size: 14px;
-                padding: 7.5px;
-                border-radius: 5px;
-                text-align: center;
-                cursor: pointer;
-
-                &:hover {
-                    background: $portfolioNavHover;
-
-                }
-            }
         }
     }
 
@@ -151,105 +89,170 @@
         .portfolio__container {
             display: grid;
             cursor: pointer;
+        }
+    }
+}
 
-            &:hover>.container__pic::before {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.4);
-                transition: all 1s;
+.work__text {
+
+    &>h2,
+    &>p {
+        text-align: center;
+    }
+
+    h2 {
+        font-family: $fontMainBanner;
+        font-size: $mainBannerFontSize;
+        margin: 10px 0px;
+        text-transform: uppercase;
+
+        @media only screen and (max-width: 800px) {
+            margin-top: 60px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &>p:nth-child(2) {
+        width: 90%;
+        font-size: $smallTextSize;
+        line-height: 20px;
+    }
+}
+
+.work__portfolio--nav {
+    &>span {
+        align-self: center;
+        margin-left: 10px;
+        text-transform: uppercase;
+        font-weight: bold;
+        cursor: pointer;
+
+        @media only screen and (max-width: 700px) {
+            margin-left: 0px;
+            text-align: center;
+        }
+    }
+
+    div {
+        justify-self: flex-end;
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: min-content;
+        grid-column-gap: 20px;
+
+        @media only screen and (max-width: 700px) {
+            grid-auto-flow: row;
+            justify-self: center;
+        }
+
+        span {
+            font-size: 14px;
+            padding: 7.5px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+
+            &:hover {
+                background: $portfolioNavHover;
+
             }
+        }
+    }
+}
 
-            &:hover>.container__pic::after {
-                content: '';
-                position: absolute;
-                width: 50px;
-                height: 50px;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: url('../../assets/pictures-work.png') -572px -451px;
-                transition: all 1s;
-            }
+.portfolio__container {
+    &:hover>.container__pic::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        transition: all 1s;
+    }
 
-            .container__pic {
-                justify-self: center;
-                width: 100%;
-                max-width: 200px;
-                height: 200px;
-                position: relative;
+    &:hover>.container__pic::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include picAfter;
+        transition: all 1s;
+    }
 
-                &--first {
-                    background: url('../../assets/pictures-work.png') -576px -230px;
-                }
+    .container__pic {
+        justify-self: center;
+        @include picSize;
+        position: relative;
 
-                &--second {
-                    background: url('../../assets/pictures-work.png') -10px -10px;
-                }
+        &--first {
+            background: url('../../assets/pictures-work.png') -576px -230px;
+        }
 
-                &--third {
-                    background: url('../../assets/pictures-work.png') -10px -451px;
-                }
+        &--second {
+            background: url('../../assets/pictures-work.png') -10px -10px;
+        }
 
-                &--fourth {
-                    background: url('../../assets/pictures-work.png') -576px -10px;
-                }
+        &--third {
+            background: url('../../assets/pictures-work.png') -10px -451px;
+        }
 
-                &--fifth {
-                    background: url('../../assets/pictures-work.png') -290px -451px;
-                }
+        &--fourth {
+            background: url('../../assets/pictures-work.png') -576px -10px;
+        }
 
-                &--sixth {
-                    background: url('../../assets/pictures-work.png') -293px -10px;
-                }
+        &--fifth {
+            background: url('../../assets/pictures-work.png') -290px -451px;
+        }
 
-                &--seventh {
-                    background: url('../../assets/pictures-work.png') -293px -231px;
-                }
+        &--sixth {
+            background: url('../../assets/pictures-work.png') -293px -10px;
+        }
 
-                &--eighth {
-                    background: url('../../assets/pictures-work.png') -10px -231px;
-                }
-            }
+        &--seventh {
+            background: url('../../assets/pictures-work.png') -293px -231px;
+        }
 
-            .container__desc {
-                justify-self: center;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 40px;
-                background: $pictureDescBackground;
-                width: 100%;
-                max-width: 200px;
-                text-transform: uppercase;
-                font-size: 14px;
-                color: $pictureDescTextColor;
-                position: relative;
+        &--eighth {
+            background: url('../../assets/pictures-work.png') -10px -231px;
+        }
+    }
 
-                &::after {
-                    content: '';
-                    position: absolute;
-                    top: -15px;
-                    left: 50%;
-                    margin-left: -15px;
-                    z-index: 2;
-                    background: inherit;
-                    width: 30px;
-                    height: 30px;
-                    transform: rotate(-45deg);
-                }
+    .container__desc {
+        justify-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 40px;
+        max-width: 200px;
+        background: $pictureDescBackground;
+        text-transform: uppercase;
+        font-size: 14px;
+        color: $pictureDescText;
+        position: relative;
 
-                span {
-                    width: 100%;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    z-index: 3;
-                    text-align: center;
-                }
-            }
+        &::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            margin-left: -15px;
+            z-index: 2;
+            background: inherit;
+            width: 30px;
+            height: 30px;
+            transform: rotate(-45deg);
+        }
+
+        span {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            text-align: center;
         }
     }
 }
