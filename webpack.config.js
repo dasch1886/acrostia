@@ -26,7 +26,7 @@ module.exports = {
   output: {
     path: __dirname + '/dist',
     filename: '[name]/bundle.js',
-    publicPath: '/acrostia/',
+    publicPath: '/acrostia/dist',
   },
   optimization: {
     minimize: true
