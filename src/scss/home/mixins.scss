@@ -2,3 +2,11 @@
     width: 34px;
     height: 56px;
 }
+
+@mixin arrowLeft {
+    background: url('../../assets/arrows-home.png') -10px -10px;
+}
+
+@mixin arrowRight {
+    background: url('../../assets/arrows-home.png') -64px -10px;
+}

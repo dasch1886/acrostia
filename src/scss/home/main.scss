@@ -3,78 +3,84 @@
     overflow-x: hidden;
 
     &__nav {
-        @include navContainer($navItemHoverColor);
+        @include navContainer($navItemHoverBg);
     }
 
     &__column {
         &--first {
             grid-row: 1 / 3;
             grid-column-start: 1;
-            @include center-self;
-
-            .arrow--left {
-                @include arrowSize;
-                cursor: pointer;
-                background: url('../../assets/arrows-home.png') -10px -10px;
-
-                @media only screen and (max-width: 768px) {
-                    transform: scale(0.75);
-                }
-
-                @media only screen and (max-width: 576px) {
-                    transform: scale(0.5);
-                }
-            }
+            @include centerSelf;
         }
 
         &--second {
             grid-row: 1 / 3;
             grid-column-start: 2;
-            @include center-self;
+            @include centerSelf;
             display: grid;
         }
 
         &--third {
             grid-row: 1 / 3;
             grid-column-start: 3;
-            @include center-self;
-
-            .arrow--right {
-                @include arrowSize;
-                cursor: pointer;
-                background: url('../../assets/arrows-home.png') -64px -10px;
-
-                @media only screen and (max-width: 768px) {
-                    transform: scale(0.75);
-                }
-
-                @media only screen and (max-width: 576px) {
-                    transform: scale(0.5);
-                }
-            }
+            @include centerSelf;
         }
     }
 
     &__footer--slider {
         grid-row-start: 3;
         grid-column: 1 / 4;
-        @include center-self;
+        @include centerSelf;
         margin-bottom: 10px;
         margin-right: 35px;
 
         @media only screen and (max-width: 1000px) {
             margin-right: 0px;
         }
+    }
+}
 
-        .slider__dot {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border-radius: 10px;
-            background-color: $sliderDotColor;
-            margin: 0px 10px 0px 10px;
-            cursor: pointer;
+.main__column--first {
+    .arrow--left {
+        @include arrowSize;
+        @include arrowLeft;
+        cursor: pointer;
+
+        @media only screen and (max-width: 768px) {
+            transform: scale(0.75);
         }
+
+        @media only screen and (max-width: 576px) {
+            transform: scale(0.5);
+        }
+    }
+}
+
+.main__column--third {
+    .arrow--right {
+        @include arrowSize;
+        @include arrowRight;
+        cursor: pointer;
+
+        @media only screen and (max-width: 768px) {
+            transform: scale(0.75);
+        }
+
+        @media only screen and (max-width: 576px) {
+            transform: scale(0.5);
+        }
+    }
+}
+
+.main__footer--slider {
+    .slider__dot {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        background-color: $sliderDotBg;
+        margin: 0px 10px 0px 10px;
+        cursor: pointer;
     }
 }
 
@@ -92,21 +98,20 @@
     }
 
     .nav__toggle--ul {
-        @include navContainerToggle($navItemHoverColor, $mainFontColor);
+        @include navContainerToggle($navItemHoverBg, $mainFontColor);
     }
 
     .nav__standard {
-        @include navContainerStandard($navItemHoverColor, $mainFontColor);
+        @include navContainerStandard($navItemHoverBg, $mainFontColor);
     }
 }
 
 .slider__container {
-    @include center-self;
+    @include centerSelf;
     width: 650px;
-    font-family: 'Lato', sans-serif;
     color: $sliderFontColor;
-    background-color: $sliderBgColor;
-    box-shadow: 0 0 0 0.2rem $sliderBgColor;
+    background-color: $sliderBg;
+    box-shadow: 0 0 0 0.2rem $sliderBg;
     border-radius: 1px;
     padding: 5px;
     margin-left: 30px;
