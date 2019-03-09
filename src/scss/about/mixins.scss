@@ -1,0 +1,42 @@
+@mixin memberIcon {
+    width: 164px;
+    height: 164px;
+    background: url('../../assets/icons-about.png') -10px -10px;
+}
+
+@mixin memberIconHover {
+    background: url('../../assets/icons-about.png') -194px -10px;
+}
+
+@mixin iconsBefore {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s;
+}
+
+@mixin facebookBefore {
+    width: 8px;
+    height: 15px;
+    background: url('../../assets/icons-about.png') -10px -230px;
+}
+
+@mixin twitterBefore {
+    width: 15px;
+    height: 12px;
+    background: url('../../assets/icons-about.png') -79px -194px;
+}
+
+@mixin googleBefore {
+    width: 15px;
+    height: 16px;
+    background: url('../../assets/icons-about.png') -10px -194px;
+}
+
+@mixin linkedinBefore {
+    width: 14px;
+    height: 14px;
+    background: url('../../assets/icons-about.png') -45px -194px;
+}

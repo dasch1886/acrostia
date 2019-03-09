@@ -3,7 +3,7 @@
     overflow-x: hidden;
 
     &__nav {
-        @include navContainer($navItemActive);
+        @include navContainer($navItemHover);
 
     }
 
@@ -27,12 +27,12 @@
     }
 
     .nav__toggle--ul {
-        @include navContainerToggle($navItemActive, $mainFontColor);
+        @include navContainerToggle($navItemHover, $mainFontColor);
         position: fixed;
     }
 
     .nav__standard {
-        @include navContainerStandard($navItemActive, $mainFontColor);
+        @include navContainerStandard($navItemHover, $mainFontColor);
     }
 }
 
@@ -50,51 +50,6 @@
         align-items: center;
         justify-content: center;
         flex-flow: column;
-
-        &>h2,
-        &>p {
-            text-align: center;
-        }
-
-        h2 {
-            font-family: Myriad Pro;
-            font-size: 48px;
-            margin: 10px 0px;
-            text-transform: uppercase;
-
-            @media only screen and (max-width: 800px) {
-                margin-top: 60px;
-                margin-bottom: 10px;
-            }
-        }
-
-        &--small {
-            width: 90%;
-            font-size: 12px;
-            line-height: 20px;
-        }
-
-        .about__arrow--down{
-            background: $bannerWithArrow;
-            margin: 10px 0px;
-            padding: 10px;
-            border-radius: 4px;
-            position: relative;
-        }
-
-        .about__arrow--down::after{
-            content: '';
-            position: absolute;
-            z-index: -1;
-            width: 15px;
-            height: 15px;
-            bottom: -7.5px;
-            left: 50%;
-            margin-left: -7.5px;
-            transform: rotate(45deg);
-            transform-origin: center center;
-            background: $bannerWithArrow; 
-        }
     }
 
     .about__members {
@@ -118,11 +73,59 @@
     }
 }
 
+.about__text {
+
+    &>h2,
+    &>p {
+        text-align: center;
+    }
+
+    h2 {
+        font-family: $fontMainBanner;
+        font-size: $mainBannerFontSize;
+        margin: 10px 0px;
+        text-transform: uppercase;
+
+        @media only screen and (max-width: 800px) {
+            margin-top: 60px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &>p:nth-child(2) {
+        width: 90%;
+        font-size: $smallTextSize;
+        line-height: 20px;
+    }
+
+    .about__arrow--down {
+        background: $bannerWithArrowBg;
+        margin: 10px 0px;
+        padding: 10px;
+        border-radius: 4px;
+        position: relative;
+    }
+
+    .about__arrow--down::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        width: 15px;
+        height: 15px;
+        bottom: -7.5px;
+        left: 50%;
+        margin-left: -7.5px;
+        transform: rotate(45deg);
+        transform-origin: center center;
+        background: $bannerWithArrowBg;
+    }
+}
+
 .member__container {
     display: grid;
     grid-auto-flow: row;
     grid-template-rows: 134px min-content min-content;
-    background: $memberContainerColor;
+    background: $memberContainerBg;
     padding-bottom: 30px;
     cursor: pointer;
     transition: all 1s;
@@ -133,30 +136,30 @@
     }
 
     &:hover>.member__shape {
-        background: url('../../assets/icons-about.png') -194px -10px;
+        @include memberIconHover;
     }
 
     &:hover>p {
-        color: $memberPositionColorHover;
+        color: $memberPositionHover;
         transition: all 0.5s;
     }
 
-    &:hover .icons__social>.icons__social--facebook {
+    &:hover .icons__container>.icon__social--facebook {
         background: $iconFacebookHover;
         transition: all 0.5s;
     }
 
-    &:hover .icons__social>.icons__social--twitter {
+    &:hover .icons__container>.icon__social--twitter {
         background: $iconTwitterHover;
         transition: all 0.5s;
     }
 
-    &:hover .icons__social>.icons__social--google {
+    &:hover .icons__container>.icon__social--google {
         background: $iconGoogleHover;
         transition: all 0.5s;
     }
 
-    &:hover .icons__social>.icons__social--linkedin {
+    &:hover .icons__container>.icon__social--linkedin {
         background: $iconLinkedinHover;
         transition: all 0.5s;
     }
@@ -165,9 +168,7 @@
         align-self: center;
         justify-self: center;
         transform: scale(0.5);
-        width: 164px;
-        height: 164px;
-        background: url('../../assets/icons-about.png') -10px -10px;
+        @include memberIcon;
     }
 
     &>span {
@@ -182,19 +183,24 @@
     &>p {
         justify-self: center;
         text-align: center;
-        font-size: 12px;
-        color: $memberPositionColor;
+        font-size: $smallTextSize;
+        color: $memberPositionBg;
         width: 80%;
         transition: all 0.5s;
         margin-bottom: 25px;
     }
 
-    .icons__social {
+    .icons__container {
         justify-self: center;
         display: grid;
         grid-template-columns: repeat(4, 30px);
         grid-template-rows: minmax(30px, auto);
         grid-column-gap: 15px;
+    }
+}
+
+.icons__container {
+    .icon__social {
 
         &--facebook,
         &--twitter,
@@ -202,7 +208,7 @@
         &--linkedin {
             min-height: 30px;
             min-width: 30px;
-            background: $socialIcons;
+            background: $socialIconsBg;
             position: relative;
             border-radius: 50%;
             transition: all 0.5s;
@@ -212,33 +218,20 @@
         &--twitter::before,
         &--google::before,
         &--linkedin::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 8px;
-            height: 15px;
-            background: url('../../assets/icons-about.png') -10px -230px;
-            transition: all 0.5s;
+            @include iconsBefore;
+            @include facebookBefore
         }
 
         &--twitter::before {
-            width: 15px;
-            height: 12px;
-            background: url('../../assets/icons-about.png') -79px -194px;
+            @include twitterBefore;
         }
 
         &--google::before {
-            width: 15px;
-            height: 16px;
-            background: url('../../assets/icons-about.png') -10px -194px;
+            @include googleBefore;
         }
 
         &--linkedin::before {
-            width: 14px;
-            height: 14px;
-            background: url('../../assets/icons-about.png') -45px -194px;
+            @include linkedinBefore;
         }
     }
 }
