@@ -1,23 +1,24 @@
-@mixin lightball {
+@mixin iconSize {
     height: 140px;
     width: 140px;
+}
+
+@mixin lightball {
+    @include iconSize;
     background: url('../../assets/icons-services.png') -170px -10px;
 }
 
 @mixin giars {
-    width: 140px; 
-    height: 140px;
+    @include iconSize;
     background: url('../../assets/icons-services.png') -10px -10px;
 }
 
 @mixin rocket {
-    width: 140px; 
-    height: 140px;
+    @include iconSize;
     background: url('../../assets/icons-services.png') -10px -170px;
 }
 
 @mixin wand {
-    width: 140px;
-    height: 140px;
+    @include iconSize;
     background: url('../../assets/icons-services.png') -170px -170px;
 }

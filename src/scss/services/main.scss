@@ -3,8 +3,8 @@
     overflow-x: hidden;
 
     &__nav {
-        @include navContainer($navItemActive);
-        
+        @include navContainer($navItemHover);
+
     }
 
     &__services {
@@ -27,19 +27,19 @@
     }
 
     .nav__toggle--ul {
-        @include navContainerToggle($navItemActive, $mainFontColor);
+        @include navContainerToggle($navItemHover, $mainFontColor);
         position: fixed;
     }
 
     .nav__standard {
-        @include navContainerStandard($navItemActive, $mainFontColor);
+        @include navContainerStandard($navItemHover, $mainFontColor);
     }
 }
 
 .main__services {
     display: grid;
     grid-auto-flow: row;
-    
+
     @media only screen and (max-width: 968px) {
         grid-row-gap: 15px;
         margin-bottom: 15px;
@@ -50,107 +50,108 @@
         align-items: center;
         justify-content: center;
         flex-flow: column;
-
-        &>h2,
-        &>p {
-            text-align: center;
-        }
-
-        h2 {
-            font-family: Myriad Pro;
-            font-size: 48px;
-            margin: 10px 0px;
-            text-transform: uppercase;
-
-            @media only screen and (max-width: 800px) {
-                margin-top: 60px;
-                margin-bottom: 10px;
-            }
-        }
-
-        &--medium {
-            font-size: 16px;
-            text-transform: uppercase;
-            margin: 10px 0px;
-
-            span{
-                color: $textLobortis;
-            }
-        }
-
-        &--small {
-            width: 90%;
-            font-size: 12px;
-            line-height: 20px;
-        }
     }
 
-    .services__icons{
+    .services__container {
         display: grid;
         grid-auto-flow: column;
         grid-column-gap: 15px;
-        grid-template-columns: repeat(4,3fr);
+        grid-template-columns: repeat(4, 3fr);
         grid-template-rows: min-content;
 
-        @media only screen and (max-width: 968px){
+        @media only screen and (max-width: 968px) {
             grid-auto-flow: row;
-            grid-template-columns: repeat(2,5fr);
+            grid-template-columns: repeat(2, 5fr);
             grid-row-gap: 15px;
         }
 
-        @media only screen and (max-width: 576px){
+        @media only screen and (max-width: 576px) {
             grid-auto-flow: row;
-            grid-template-columns: repeat(1,10fr);
+            grid-template-columns: repeat(1, 10fr);
             grid-row-gap: 15px;
         }
-
-        
     }
 }
 
-.icons__container{
+.services__text {
+
+    &>h2,
+    &>p {
+        text-align: center;
+    }
+
+    h2 {
+        font-family: $fontMainBanner;
+        font-size: $mainBannerFontSize;
+        margin: 10px 0px;
+        text-transform: uppercase;
+
+        @media only screen and (max-width: 800px) {
+            margin-top: 60px;
+            margin-bottom: 10px;
+        }
+    }
+
+    & p:nth-child(2) {
+        font-size: $mediumTextSize;
+        text-transform: uppercase;
+        margin: 10px 0px;
+
+        span {
+            color: $textLobortis;
+        }
+    }
+
+    & p:nth-child(3) {
+        width: 90%;
+        font-size: $smallTextSize;
+        line-height: 20px;
+    }
+}
+
+.service__container {
     display: grid;
     grid-auto-flow: row;
     grid-template-rows: 134px min-content min-content;
-    background: $servicesIcons;
+    background: $serviceBg;
     padding-bottom: 30px;
     cursor: pointer;
     transition: all 1s;
 
-    &:hover{
+    &:hover {
         transform: scale(1.2);
         transition: transform 1s;
     }
 
-    .icons__logo{
+    .service__logo {
 
         &--research,
         &--design,
         &--development,
-        &--lunch{
+        &--lunch {
             align-self: center;
             justify-self: center;
             transform: scale(0.6);
         }
 
-        &--research{
+        &--research {
             @include lightball;
         }
 
-        &--design{
+        &--design {
             @include wand;
         }
 
-        &--development{
+        &--development {
             @include giars;
         }
 
-        &--lunch{
+        &--lunch {
             @include rocket;
-        }        
+        }
     }
 
-    & > span {
+    &>span {
         justify-self: center;
         text-align: center;
         text-transform: uppercase;
@@ -158,7 +159,7 @@
         margin-bottom: 25px;
     }
 
-    & > p {
+    &>p {
         justify-self: center;
         text-align: center;
         font-size: 12px;
