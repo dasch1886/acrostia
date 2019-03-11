@@ -4,14 +4,24 @@
     }
 
     33% {
-        transform: rotateZ(40deg);
+        transform: rotateZ(30deg);
     }
 
     66% {
-        transform: rotateZ(-40deg);
+        transform: rotateZ(-30deg);
     }
 
     100% {
         transform: rotateZ(0deg);
+    }
+}
+
+@keyframes moveSlideFromRight {
+    0% {
+        transform: translateX(15px);
+    }
+
+    100% {
+        transform: translateX(0px);
     }
 }

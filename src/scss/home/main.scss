@@ -18,6 +18,7 @@
             grid-column-start: 2;
             @include centerSelf;
             display: grid;
+            position: relative;
         }
 
         &--third {
@@ -81,12 +82,30 @@
         background-color: $sliderDotBg;
         margin: 0px 10px 0px 10px;
         cursor: pointer;
+        transition: all 0.5s;
+    }
+
+    .dot--active {
+        background-color: $sliderDotActiveBg;
+        transition: all 0.5s;
     }
 }
 
 .main__nav {
     h1 {
         @include navContainerLogo($mainFontColor);
+
+        &>a {
+            display: inline-block;
+            animation-name: wavingLogo;
+            animation-duration: 1s;
+            animation-timing-function: ease;
+
+            @media only screen and (max-width: 768px) {
+                animation-iteration-count: 0;
+            }
+        }
+
     }
 
     .nav__toggle--label {
@@ -124,7 +143,7 @@
     }
 
     @media only screen and (max-width: 420px) {
-        grid-template-columns: 12fr;
+        // grid-template-columns: 12fr;
     }
 
     .slider__column {
@@ -155,16 +174,41 @@
             font-weight: bolder;
 
             @media only screen and (max-width: 768px) {
-                font-size: 66px;
+                font-size: 56px;
             }
 
             @media only screen and (max-width: 576px) {
-                font-size: 60px;
+                font-size: 40px;
                 text-align: center;
             }
         }
     }
 }
+
+.slide__first {
+    @include slidePosition;
+    @include slideLayer(3, 0);
+}
+
+.slide__second {
+    @include slidePosition;
+    @include slideLayer(2, 0);
+}
+
+.slide__third {
+    @include slidePosition;
+    @include slideLayer(1, 0);
+}
+
+.slide--active {
+    opacity: 1;
+    animation-name: moveSlideFromRight;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+}
+
+
+
 
 @include hamburgerToCross(line-bottom, 45deg);
 @include hamburgerToCross(line-top, -45deg);

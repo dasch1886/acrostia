@@ -10,3 +10,13 @@
 @mixin arrowRight {
     background: url('../../assets/arrows-home.png') -64px -10px;
 }
+
+@mixin slidePosition {
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+
+@mixin slideLayer($zIndex, $opacity) {
+    z-index: $zIndex;
+    opacity: $opacity;
+}
