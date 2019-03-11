@@ -4,37 +4,30 @@ module.exports = {
   entry: {
     home: [
       __dirname + '/src/app/home.js',
-      __dirname + '/src/scss/home/style.scss'
     ],
     services: [
       __dirname + '/src/app/services.js',
-      __dirname + '/src/scss/services/style.scss'
     ],
     about: [
       __dirname + '/src/app/about.js',
-      __dirname + '/src/scss/about/style.scss'
     ],
     work: [
       __dirname + '/src/app/work.js',
-      __dirname + '/src/scss/work/style.scss'
     ],
     contacts: [
       __dirname + '/src/app/contact.js',
-      __dirname + '/src/scss/contact/style.scss'
     ]
   },
   output: {
     path: __dirname + '/dist',
     filename: '[name]/bundle.js',
-    publicPath: '/acrostia/dist',
   },
   optimization: {
-    minimize: true
+    minimize: true,
   },
   devServer: {
     contentBase: __dirname + '/dist',
     port: 9000,
-    publicPath: '/acrostia/dist',
   },
   module: {
     rules: [{
@@ -74,6 +67,16 @@ module.exports = {
             loader: 'sass-loader'
           }
         ]
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }
     ]
   }
